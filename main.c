@@ -1,8 +1,9 @@
 #include <ncurses.h>
 #include "pharm/pharm.h"
-#include "./tetris/tetris.h"
+// #include "./tetris/tetris.h"
 
-int main() {
+int main()
+{
     int rows, cols, key, pos;
 
     initscr();
@@ -10,31 +11,46 @@ int main() {
     keypad(stdscr, true);
     getmaxyx(stdscr, rows, cols);
 
-    do {
+    do
+    {
         clear();
-        if (key == 10) {
-            if (pos == 0) choose_service(rows, cols);
-            else renderTetris(rows, cols);
+        if (key == 10 || key == 261)
+        {
+            if (pos == 0)
+                choose_service(rows, cols);
+            // else
+            //     renderTetris(rows, cols);
 
             clear();
-        } else if (key == 258) {
+        }
+        else if (key == 258)
+        {
             pos++;
-            if (pos > 1) pos = 0;
-        } else if (key == 259) {
+            if (pos > 1)
+                pos = 0;
+        }
+        else if (key == 259)
+        {
             pos--;
-            if (pos < 0) pos = 1;
+            if (pos < 0)
+                pos = 1;
         }
 
-        if (pos == 0) {
+        if (pos == 0)
+        {
             mvprintw(1, 2, ">> Copy server log file");
             mvprintw(3, 2, "   Tetris");
-        } else {
+        }
+        else
+        {
             mvprintw(1, 2, "   Copy server log file");
             mvprintw(3, 2, ">> Tetris");
         }
 
         mvprintw(rows - 2, 2, "Press key: %d", key);
-    } while ((key = getch()) != 27);
+
+        key = getch();
+    } while (key != 27 || key != 260);
 
     endwin();
     return 0;

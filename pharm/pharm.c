@@ -7,47 +7,47 @@
 #include <string.h>
 #include "pharm.h"
 
-int render_menu(int pos, char* service_name)
+int render_menu(int pos, char *service_name)
 {
     clear();
     mvprintw(1, 2, "Choose a service:");
 
     switch (pos) {
         case 1:
-            mvprintw(3, 2, "api-php-fpm");
+            mvprintw(3, 2, "   api-php-fpm");
             mvprintw(5, 2, ">> api-cheduler");
-            mvprintw(7, 2, "api-worker");
-            mvprintw(9, 2, "api-subscribe");
+            mvprintw(7, 2, "   api-worker");
+            mvprintw(9, 2, "   api-subscribe");
 
             strcpy(service_name, "api-cheduler");
             break;
         case 2:
-            mvprintw(3, 2, "api-php-fpm");
-            mvprintw(5, 2, "api-cheduler");
+            mvprintw(3, 2, "   api-php-fpm");
+            mvprintw(5, 2, "   api-cheduler");
             mvprintw(7, 2, ">> api-worker");
-            mvprintw(9, 2, "api-subscribe");
+            mvprintw(9, 2, "   api-subscribe");
 
             strcpy(service_name, "api-worker");
             break;
         case 3:
-            mvprintw(3, 2, "api-php-fpm");
-            mvprintw(5, 2, "api-cheduler");
-            mvprintw(7, 2, "api-worker");
+            mvprintw(3, 2, "   api-php-fpm");
+            mvprintw(5, 2, "   api-cheduler");
+            mvprintw(7, 2, "   api-worker");
             mvprintw(9, 2, ">> api-subscribe");
 
             strcpy(service_name, "api-subscribe");
             break;
         default:
             mvprintw(3, 2, ">> api-php-fpm");
-            mvprintw(5, 2, "api-cheduler");
-            mvprintw(7, 2, "api-worker");
-            mvprintw(9, 2, "api-subscribe");
+            mvprintw(5, 2, "   api-cheduler");
+            mvprintw(7, 2, "   api-worker");
+            mvprintw(9, 2, "   api-subscribe");
 
             strcpy(service_name, "api-php-fpm");
     }
 }
 
-int copy_log_file(char* service_name)
+int copy_log_file(char *service_name)
 {
     char command[255] = "ssh arip@185.46.10.253 'docker cp $(docker ps -f name=pharm_";
 

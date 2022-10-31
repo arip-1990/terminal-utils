@@ -1,6 +1,6 @@
 #include <ncurses.h>
 #include "pharm/pharm.h"
-// #include "./tetris/tetris.h"
+#include "./tetris/tetris.h"
 
 int main()
 {
@@ -18,8 +18,8 @@ int main()
         {
             if (pos == 0)
                 choose_service(rows, cols);
-            // else
-            //     renderTetris(rows, cols);
+            else
+                renderTetris(rows, cols);
 
             clear();
         }
@@ -50,7 +50,7 @@ int main()
         mvprintw(rows - 2, 2, "Press key: %d", key);
 
         key = getch();
-    } while (key != 27 || key != 260);
+    } while (key != 27);
 
     endwin();
     return 0;

@@ -95,7 +95,7 @@ int choose_service(int rows, int cols)
         render_menu(pos, service_name);
 
         key = getch();
-    } while (key != 27 || key != 260);
+    } while (key != 27 && key != 260);
 
     return 0;
 }
